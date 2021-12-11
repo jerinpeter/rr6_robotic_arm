@@ -2,9 +2,15 @@
 #include <Filter.h>
 
 Servo j1,j2,j3,j4,j5,j6;  // Initializing Servo Names
-AnalogFilter<30, 10> filter;
+AnalogFilter<30, 5> filter;  // 30 samples with a sampling period of 10ms
 
 int j1_fbk = A0;
+int j2_fbk = A0;
+int j3_fbk = A0;
+int j4_fbk = A0;
+int j5_fbk = A0;
+int j5_fbk = A0;
+
 void setup() 
   {
     Serial.begin(9600);
@@ -22,25 +28,25 @@ void setup()
   delay(1000);
   j1.detach();
   
-  j2.write(45);    // 2nd joint
-  delay(1000);
-  j2.detach();
-
-  j3.write(90);    // 3rd joint
-  delay(1000);
-  j3.detach();
-  
-  j4.write(100);   // 4th joint
-  delay(1000);
-  j4.detach();
-
-  j5.write(45);    // 4th joint
-  delay(1000);
-  j5.detach();
-
-  j6.write(90);
-  delay(1000);
-  j6.detach();
+//  j2.write(45);    // 2nd joint
+//  delay(1000);
+//  j2.detach();
+//
+//  j3.write(90);    // 3rd joint
+//  delay(1000);
+//  j3.detach();
+//  
+//  j4.write(100);   // 4th joint
+//  delay(1000);
+//  j4.detach();
+//
+//  j5.write(45);    // 4th joint
+//  delay(1000);
+//  j5.detach();
+//
+//  j6.write(90);
+//  delay(1000);
+//  j6.detach();
 
   pinMode(j1_fbk,INPUT);
   
