@@ -1,6 +1,8 @@
 #include <Servo.h>
+#include <Filter.h>
 
 Servo j1,j2,j3,j4,j5,j6;  // Initializing Servo Names
+AnalogFilter<30, 10> filter;
 
 int j1_fbk = A0;
 void setup() 
@@ -15,20 +17,36 @@ void setup()
   j6.attach(7);
 
   // Initial Home Positions
-  delay(200);
-  j1.write(90);    // 1st joint
+
+  j1.write(100);    // 1st joint
+  delay(1000);
+  j1.detach();
+  
   j2.write(45);    // 2nd joint
-  delay(200);
+  delay(1000);
+  j2.detach();
+
   j3.write(90);    // 3rd joint
+  delay(1000);
+  j3.detach();
+  
   j4.write(100);   // 4th joint
-  delay(200);
+  delay(1000);
+  j4.detach();
+
   j5.write(45);    // 4th joint
+  delay(1000);
+  j5.detach();
+
   j6.write(90);
-  delay(200);
+  delay(1000);
+  j6.detach();
 
   pinMode(j1_fbk,INPUT);
+  
       }
 void loop() {
-Serial.print(analogRead(j1_fbk));
+  
+Serial.print(filter.update(analogRead(j1_fbk)));
 Serial.println("\n \n");
 }
